@@ -3,8 +3,9 @@ require_once("../../../config/database.php");
 
 session_start();
 
-if (!isset($_SESSION['admin'])) {
+if ($_SESSION['admin'] == false) {
     header("Location: ../../public/auth/login.php");
+    die();
 }
 
 $sql = "SELECT * FROM pemilihan";
@@ -31,15 +32,15 @@ if (isset($_POST['submit'])) {
     $errors = [];
 
     if (empty($nama)) {
-        echo "<script>alert('Nama Tidak Boleh Kosong')</script>";
+        $errors[] = "Nama Tidak Boleh Kosong";
     }
 
     if (empty($deskripsi)) {
-        echo "<script>alert('Deskripsi Tidak Boleh Kosong')</script>";
+        $errors[] = "Deskripsi Tidak Boleh Kosong";
     }
 
     if (empty($finalFile)) {
-        echo "<script>alert('Gambar Tidak Boleh Kosong')</script>";
+        $errors[] = "Gambar Tidak Boleh Kosong";
     }
 
     if (empty($errors)) {
@@ -48,9 +49,6 @@ if (isset($_POST['submit'])) {
             echo "<script>alert('Upload Gambar Gagal')</script>";
             return;
         }
-
-
-
         $sql = "INSERT INTO kandidat (nama,id_pemilihan,deskripsi,image) VALUES (:nama,:id_pemilihan,:deskripsi,:image)";
 
         $stmt = $pdo->prepare($sql);
@@ -60,11 +58,11 @@ if (isset($_POST['submit'])) {
         $stmt->bindParam(":deskripsi", $deskripsi);
         $stmt->bindParam(":image", $finalFile);
         $stmt->execute();
-
         echo "<script>alert('Create Data Berhasil')</script>";
+        header("refresh: 0");
     } else {
         foreach ($errors as $error) {
-            echo "<script>alert('" . $error . "')</script>";
+            echo "<script>alert('$error')</script>";
         }
     }
 }
@@ -79,15 +77,15 @@ require_once("../../inc/admin_sidebar.php");
 ?>
 
 <main class="admin form-crud">
-    <h1>Create Pemilihan</h1>
+    <h1>Create Kandidat</h1>
     <form action="" method="post" enctype="multipart/form-data">
         <div class="input-wrapper">
             <label for="nama">Nama Kandidat</label>
-            <input type="text" name="nama" id="nama">
+            <input type="text" name="nama" id="nama" required placeholder="Nama Kandidat...">
         </div>
         <div class="input-wrapper">
             <label for="id_pemilihan">Pemilihan</label>
-            <select name="id_pemilihan" id="id_pemilihan">
+            <select name="id_pemilihan" id="id_pemilihan" required>
                 <?php foreach ($pemilihan as $row) : ?>
                     <option value="<?= $row['id'] ?>"><?= $row['nama'] ?></option>
                 <?php endforeach; ?>
@@ -96,12 +94,12 @@ require_once("../../inc/admin_sidebar.php");
 
         <div class="input-wrapper">
             <label for="deskripsi">Deskripsi</label>
-            <textarea name="deskripsi" id="deskripsi" cols="30" rows="10"></textarea>
+            <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" required placeholder="Visi & Misi Kandidat..."></textarea>
         </div>
 
         <div class="input-wrapper">
             <label for="image">Gambar Kandidat</label>
-            <input type="file" name="image" id="image">
+            <input type="file" name="image" id="image" required>
         </div>
 
         <div class="crud-button-wrapper">

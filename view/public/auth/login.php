@@ -3,6 +3,11 @@ require_once("../../../config/database.php");
 
 session_start();
 
+if (isset($_SESSION['isLoggedIn'])) {
+    header("Location: ../../public/auth/login.php");
+
+    die();
+}
 
 function loginUser($email, $password, $pdo)
 {
@@ -14,10 +19,11 @@ function loginUser($email, $password, $pdo)
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if (!$user && !password_verify($password, $user['password'])) {
+    if ($user == false || !password_verify($password, $user['password'])) {
         echo "<script>alert('Email Tidak Ditemukan')</script>";
         return false;
     }
+
 
     $_SESSION['isLoggedIn'] = true;
     $_SESSION['id'] = $user['id'];
@@ -71,13 +77,13 @@ require_once("../../inc/header.php");
 
         <div class="input-wrapper">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" required>
+            <input type="email" name="email" id="email" required placeholder="Email...">
         </div>
 
         <div class="input-wrapper">
 
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" required>
+            <input type="password" name="password" id="password" required placeholder="Password...">
         </div>
 
         <div class="auth-button-wrapper">

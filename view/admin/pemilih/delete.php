@@ -3,8 +3,9 @@ require_once("../../../config/database.php");
 
 session_start();
 
-if (!isset($_SESSION['admin'])) {
+if ($_SESSION['admin'] == false) {
     header("Location: ../../public/auth/login.php");
+    die();
 }
 
 $id = $_GET['id'];

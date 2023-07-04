@@ -3,8 +3,9 @@ require_once("../../../config/database.php");
 
 session_start();
 
-if (!isset($_SESSION['admin'])) {
+if ($_SESSION['admin'] == false) {
     header("Location: ../../public/auth/login.php");
+    die();
 }
 
 $id = $_GET['id'];
@@ -25,16 +26,16 @@ if (isset($_POST['submit'])) {
     $errors = [];
 
     if (empty($nama_lengkap)) {
-        echo "<script>alert('Nama Lengkap Tidak Boleh Kosong')</script>";
+        $errors[] =  "Nama Lengkap Tidak Boleh Kosong";
     }
 
 
     if (empty($alamat)) {
-        echo "<script>alert('Alamat Tidak Boleh Kosong')</script>";
+        $errors[] =  "Alamat Tidak Boleh Kosong";
     }
 
     if (empty($tanggal_lahir)) {
-        echo "<script>alert('Tanggal Lahir Tidak Boleh Kosong')</script>";
+        $errors[] =  "Tanggal Lahir Tidak Boleh Kosong";
     }
 
 
@@ -53,9 +54,11 @@ if (isset($_POST['submit'])) {
         $stmt->execute();
 
         echo "<script>alert('Update Data Berhasil')</script>";
+
+        header("refresh: 0");
     } else {
         foreach ($errors as $error) {
-            echo "<script>alert('" . $error . "')</script>";
+            echo "<script>alert('$error')</script>";
         }
     }
 }

@@ -3,8 +3,9 @@ require_once("../../../config/database.php");
 
 session_start();
 
-if (!isset($_SESSION['admin'])) {
+if ($_SESSION['admin'] == false) {
     header("Location: ../../public/auth/login.php");
+    die();
 }
 
 $stmt = $pdo->query("SELECT * FROM pemilihan");
@@ -40,14 +41,16 @@ require_once("../../inc/admin_sidebar.php");
                 <td><?= $row['nama'] ?></td>
                 <td>
                     <?php if ($row['status'] == 'tidak_berlangsung') { ?>
-                        Tidak Berlangsung
+                        <p class="tidak-berlangsung">Tidak Berlangsung</p>
+                    <?php } elseif ($row['status'] == "berlangsung") { ?>
+                        <p class="berlangsung">Berlangsung</p>
                     <?php } else { ?>
-                        Berlangsung
+                        <p class="selesai">Selesai</p>
                     <?php } ?>
                 </td>
                 <td class="actions">
                     <a href="edit.php?id=<?= $row['id'] ?>">Edit</a>
-                    <a href="delete.php?id=<?= $row['id'] ?>">Delete</a>
+                    <a href="delete.php?id=<?= $row['id'] ?>" onclick="return confirm('Are You Sure?')">Delete</a>
                 </td>
 
             </tr>

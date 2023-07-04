@@ -1,0 +1,22 @@
+{
+    "noto sans": {
+        "100_italic": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_100_italic_674ff7894caf9d343e9df029689f9597",
+        "200_italic": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_200_italic_c0a36fba8bc1107f148217384cffc083",
+        "300_italic": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_300_italic_6ebe4fccda73d5ebd3ac26b83235457e",
+        "italic": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_italic_e76612f4084204ea9d4d39c01533eadd",
+        "500_italic": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_500_italic_a6379cefd82ca4b972af993dbf9e8543",
+        "600_italic": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_600_italic_984da0bc3c289970ae51c67f4288f197",
+        "bold_italic": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_bold_italic_e20b60104ec1531417990c7db0eee375",
+        "800_italic": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_800_italic_9acdb134a856a625b78dd52aa5927abf",
+        "900_italic": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_900_italic_d2e2c756be590d3c57840e238a05552f",
+        "100": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_100_2fc47582ccd66f6a132e56db50bf4127",
+        "200": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_200_ad7e0c14149f1c44d53decb26b003c77",
+        "300": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_300_f81d6dc7581add4ba365d89407937d43",
+        "normal": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_normal_3c0b18006c859b42e22485b51b7c31f4",
+        "500": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_500_dc8b4bc265f59516621a44cbc0e58276",
+        "600": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_600_dc3432878897783116ceba738b55f4bb",
+        "bold": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_bold_ece2dce5e5a7716d0a7a1cbc0fd33e5b",
+        "800": "C:\\xampp\\htdocs\\aplikasi_voting_berbasis_web\\library\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/noto_sans_800_30a2349ee7548982d0ecc253ff084afb",
+        "900": "noto_sans_900_38c49da7ba1a2e2495e5090712ff2269"
+    }
+}

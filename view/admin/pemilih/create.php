@@ -3,8 +3,9 @@ require_once("../../../config/database.php");
 
 session_start();
 
-if (!isset($_SESSION['admin'])) {
+if ($_SESSION['admin'] == false) {
     header("Location: ../../public/auth/login.php");
+    die();
 }
 
 function isDuplicateEmail($email, $pdo)
@@ -69,14 +70,8 @@ function registerUser($nama_lengkap, $email, $no_ktp, $alamat, $tanggal_lahir, $
 
         $stmt->execute();
 
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        $_SESSION['id'] = $user['id'];
-        $_SESSION['isLoggedIn'] = true;
-        $_SESSION['admin'] = false;
-
         echo "<script>
-        alert('Registrasi Berhasil') 
+        alert('Create Data Berhasil') 
         </script>";
     }
 }
@@ -94,39 +89,41 @@ if (isset($_POST['submit'])) {
     $errors = [];
 
     if (empty($nama_lengkap)) {
-        echo "<script>alert('Nama Lengkap Tidak Boleh Kosong')</script>";
+        $errors[] =  "Nama Lengkap Tidak Boleh Kosong";
     }
 
     if (empty($email)) {
-        echo "<script>alert('Email Tidak Boleh Kosong')</script>";
+        $errors[] =  "Email Tidak Boleh Kosong";
     }
 
     if (empty($no_ktp)) {
-        echo "<script>alert('No Ktp Tidak Boleh Kosong')</script>";
+        $errors[] =  "No Ktp Tidak Boleh Kosong";
     }
 
     if (empty($alamat)) {
-        echo "<script>alert('Alamat Tidak Boleh Kosong')</script>";
+        $errors[] =  "Alamat Tidak Boleh Kosong";
     }
 
     if (empty($tanggal_lahir)) {
-        echo "<script>alert('Tanggal Lahir Tidak Boleh Kosong')</script>";
+        $errors[] =  "Tanggal Lahir Tidak Boleh Kosong";
     }
 
     if (empty($password)) {
-        echo "<script>alert('Password Tidak Boleh Kosong')</script>";
+        $errors[] =  "Password Tidak Boleh Kosong";
     }
 
     if (empty($konfirmasi_password)) {
-        echo "<script>alert('Konfirmasi Password Tidak Boleh Kosong')</script>";
+        $errors[] =  "Konfirmasi Password Tidak Boleh Kosong";
     }
 
 
     if (empty($errors)) {
         registerUser($nama_lengkap, $email, $no_ktp, $alamat, $tanggal_lahir, $jenis_kelamin, $password, $konfirmasi_password, $pdo);
+
+        header("refresh: 0");
     } else {
         foreach ($errors as $error) {
-            echo "<script>alert('" . $error . "')</script>";
+            echo "<script>alert('$error')</script>";
         }
     }
 }
@@ -175,7 +172,7 @@ require_once("../../inc/admin_sidebar.php");
                 <label for="jenis_kelamin">Jenis Kelamin</label>
                 <select name="jenis_kelamin" id="jenis_kelamin" required>
                     <option value="pria">Laki-Laki</option>
-                    <option value="perempuan">Perempuan</option>
+                    <option value="wanita">Perempuan</option>
                 </select>
             </div>
         </div>

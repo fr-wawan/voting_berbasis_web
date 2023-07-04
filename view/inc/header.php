@@ -16,21 +16,19 @@
 
     <header>
         <nav class="navbar">
-            <h1>VOTING</h1>
+            <h1><a href="../../../view/public/voting/index.php">VOTING</a></h1>
             <ul>
-                <li><a href="">VOTE</a></li>
+                <li><a href="../../../view/public/voting/index.php">VOTE</a></li>
             </ul>
             <div class="navbar-right">
-                <div>
-                    <?php if (!isset($_SESSION['isLoggedIn'])) { ?>
-                        <a href="../../../view/public/auth/login.php">Sign In</a>
-                    <?php } elseif (isset($_SESSION['admin']) && $_SESSION['admin'] == true) { ?>
-                        <a href="">Admin</a>
-                        <a href="../../../view/public/auth/logout.php">Logout</a>
-                    <?php } else { ?>
-                        <a href="../../../view/public/auth/logout.php">Logout</a>
-                    <?php } ?>
-                </div>
+                <?php if (!isset($_SESSION['isLoggedIn'])) { ?>
+                    <a href="../../../view/public/auth/login.php">Sign In</a>
+                <?php } elseif (isset($_SESSION['admin']) && $_SESSION['admin'] == true) { ?>
+                    <a href="../../../view/admin/dashboard/index.php">Admin</a>
+                    <a href="../../../view/public/auth/logout.php">Logout</a>
+                <?php } else { ?>
+                    <a href="../../../view/public/auth/logout.php">Logout</a>
+                <?php } ?>
             </div>
         </nav>
     </header>

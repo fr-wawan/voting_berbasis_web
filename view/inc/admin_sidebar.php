@@ -10,7 +10,7 @@
                     <path d="M13 15l3 0"></path>
                     <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
                 </svg>
-                <p>Dashboard</p>
+                <a href="../../../view/admin/dashboard/index.php">Dashboard</a>
             </div>
         </div>
         <div class="sidebar-wrapper">

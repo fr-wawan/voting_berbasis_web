@@ -3,8 +3,9 @@ require_once("../../../config/database.php");
 
 session_start();
 
-if (!isset($_SESSION['admin'])) {
+if ($_SESSION['admin'] == false) {
     header("Location: ../../public/auth/login.php");
+    die();
 }
 
 $stmt = $pdo->query("SELECT * FROM user");
@@ -58,7 +59,7 @@ require_once("../../inc/admin_sidebar.php");
                     </td>
                     <td class="actions">
                         <a href="edit.php?id=<?= $row['id'] ?>">Edit</a>
-                        <a href="delete.php?id=<?= $row['id'] ?>">Delete</a>
+                        <a href="delete.php?id=<?= $row['id'] ?>" onclick="return confirm('Are You Sure?')">Delete</a>
                     </td>
                 </tr>
             <?php } ?>
